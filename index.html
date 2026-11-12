@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Kumar Azad’s research portfolio on quantum dynamics and mathematical physics.">
+<meta name="theme-color" content="#f6f3eb">
+<title>Kumar Azad | Research</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
+:root{color-scheme:light;--paper:#f6f3eb;--ink:#152922;--muted:#4e6158;--green:#245844;--line:#c8d0c3;--serif:"Instrument Serif",Georgia,serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif}a{color:inherit;text-underline-offset:.25em}a:hover{color:var(--green)}:focus-visible{outline:2px solid #7c4a23;outline-offset:5px}.wrap{width:min(1120px,calc(100% - 48px));margin:auto}
+header .wrap,footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem}header{border-bottom:1px solid var(--line)}header .wrap{min-height:76px}.brand{font-weight:700;text-decoration:none}nav{display:flex;gap:clamp(.85rem,3vw,2rem);font-size:.88rem}nav a{text-decoration:none}nav a:hover{text-decoration:underline}
+.hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(2rem,6vw,6rem);padding-block:clamp(3rem,8vw,7rem)}.eyebrow,.status{font-size:.7rem;font-weight:700;letter-spacing:.115em;text-transform:uppercase;color:var(--green)}h1,h2,h3,p,figure{margin:0}h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.03}h1{font-size:clamp(4rem,9vw,8rem);margin:.12em 0 .16em;letter-spacing:-.035em}.intro{max-width:36ch;color:var(--muted);font-size:clamp(1rem,1.7vw,1.25rem)}.button{display:inline-block;margin-top:1.6rem;background:var(--ink);color:#fff;border-radius:3px;padding:.65rem 1rem;text-decoration:none;font-size:.86rem;font-weight:600}.button:hover{background:var(--green);color:#fff}.visual{background:#142b23;border-radius:5px;padding:1rem 1.2rem;color:#cce2cf}canvas{display:block;width:100%;height:auto;aspect-ratio:1.45}figcaption{border-top:1px solid #527163;padding-top:.75rem;font-size:.72rem;letter-spacing:.04em}
+.section{border-top:1px solid var(--line);padding-block:clamp(2.5rem,6vw,4.8rem)}h2{font-size:clamp(2.7rem,5vw,4rem);margin-bottom:1.4rem}h3{font-size:clamp(1.65rem,3.2vw,2.55rem);margin:.3rem 0 .7rem}.featured{background:#e7ede2;padding:clamp(1.15rem,4vw,2.4rem);border-left:3px solid var(--green)}.featured p,.project p,.about p{max-width:65ch;color:var(--muted)}.projects{display:grid;grid-template-columns:1fr 1fr;column-gap:2.5rem;margin-top:1.7rem}.project{padding:1.3rem 0;border-top:1px solid var(--line)}footer{border-top:1px solid var(--line);padding-block:1.3rem;font-size:.85rem;color:var(--muted)}.skip{position:absolute;left:.8rem;top:.8rem;background:var(--paper);padding:.5rem;transform:translateY(-200%)}.skip:focus{transform:none}
+@media(max-width:700px){.wrap{width:calc(100% - 32px)}.hero,.projects{grid-template-columns:1fr}.hero{gap:1.8rem}.visual{max-width:460px}header .wrap{min-height:62px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header><div class="wrap"><a class="brand" href="./">Kumar Azad</a><nav aria-label="Main navigation"><a href="#research">Research</a><a href="#about">About</a><a href="https://github.com/KrAzad0">GitHub</a></nav></div></header>
+<main id="content" class="wrap">
+<section class="hero" aria-labelledby="name">
+<div><p class="eyebrow">Research portfolio · 2018–2026</p><h1 id="name">Kumar Azad</h1><p class="intro">I study quantum dynamics and mathematical physics, with a focus on how geometry, boundary conditions, and electromagnetic fields shape quantum systems.</p><a class="button" href="#research">Explore the research ↓</a></div>
+<figure class="visual"><canvas width="870" height="600" aria-hidden="true"></canvas><figcaption>Toroidal surface · geometric illustration</figcaption></figure>
+</section>
+<section id="research" class="section" aria-labelledby="research-title">
+<h2 id="research-title">Selected research</h2>
+<article class="featured"><span class="status">Manuscript in preparation</span><h3>Quantum dynamics on a toroidal surface</h3><p>An analytical and computational study of a Coulomb-coupled electron constrained to a torus. The project examines energy spectra, dipole selection rules, and how the handedness of a short pulse affects angular momentum.</p></article>
+<div class="projects">
+<article class="project"><span class="status">Research proposal</span><h3>Photosynthetic energy transfer</h3><p>A two-state quantum model for studying how electronic coupling and environmental noise affect excitation transfer.</p></article>
+<article class="project"><span class="status">Research proposal</span><h3>Attosecond electron dynamics</h3><p>A computational proposal to study excitation and ionization under short electromagnetic pulses.</p></article>
+<article class="project"><span class="status">Dissertation draft</span><h3>Operators and boundary conditions</h3><p>A spectral study of how boundary conditions affect self-adjointness and eigenvalues in one-dimensional quantum systems.</p></article>
+</div>
+</section>
+<section id="about" class="section about" aria-labelledby="about-title"><h2 id="about-title">About</h2><p>My work combines analytical derivations with numerical checks. This portfolio brings together selected work on quantum systems, from spectral theory and confined particles to ultrafast light–matter interactions.</p></section>
+</main>
+<footer><div class="wrap"><span>Kumar Azad</span><a href="https://github.com/KrAzad0/2018-2026">Website source on GitHub ↗</a></div></footer>
+<script>
+const canvas = document.querySelector('canvas');
+const context = canvas.getContext('2d');
+const tau = Math.PI * 2;
+
+function torusPoint(u, v) {
+  const radius = 2 + 0.72 * Math.cos(v);
+  const x = radius * Math.cos(u);
+  const y = radius * Math.sin(u);
+  const z = 0.72 * Math.sin(v);
+  const horizontal = x * 0.94 - y * 0.34;
+  const vertical = (x * 0.34 + y * 0.94) * 0.53 + z * 0.85;
+  return [435 + 132 * horizontal, 300 + 132 * vertical];
+}
+
+function trace(fixed, around) {
+  context.beginPath();
+  for (let i = 0; i <= 120; i++) {
+    const angle = tau * i / 120;
+    const [x, y] = around ? torusPoint(angle, fixed) : torusPoint(fixed, angle);
+    if (i === 0) context.moveTo(x, y);
+    else context.lineTo(x, y);
+  }
+  context.stroke();
+}
+
+context.lineWidth = 1.4;
+context.strokeStyle = 'rgba(146, 204, 166, .32)';
+for (let i = 0; i < 48; i++) trace(tau * i / 48, false);
+context.strokeStyle = 'rgba(188, 232, 188, .55)';
+for (let i = 0; i < 20; i++) trace(tau * i / 20, true);
+context.strokeStyle = '#f1c88c';
+context.lineWidth = 3;
+trace(0, true);
+</script>
+</body>
+</html>
