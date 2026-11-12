@@ -1,0 +1,317 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,geometry,hyperref}
+\geometry{margin=1in}
+\title{Research Papers and Worked Solutions}
+\author{Notes from the research archive of Kumar Azad}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+These notes develop 32 problems in toroidal quantum dynamics, spectral theory,
+ultrafast and biological quantum dynamics, and collective scattering.
+Worked results, research proposals, and unresolved questions are labeled
+throughout. The toroidal notes draw on the manuscript draft by Kumar Azad
+and Vivek S Babu.
+\end{abstract}
+\tableofcontents
+
+\section{Toroidal quantum dynamics}
+\paragraph{Abstract.} These notes derive the periodic sector Hamiltonian for a Coulomb-coupled electron on a toroidal surface and describe checks on its spectrum and pulsed response. They also document the limits of the legacy assets and distinguish the surface model from ordinary hydrogen and from uniform-field torus problems.
+
+\subsection{How should a Coulomb-coupled electron on a torus be modeled?}
+\label{problem:torus-model}
+\textit{Worked answer}
+
+Write the embedded surface as \(X=(\rho\cos\phi,\rho\sin\phi,r\sin\theta)\), where \(\rho=R+r\cos\theta\) and \(R>r>0\). The metric is \(r^2d\theta^2+\rho^2d\phi^2\), with surface measure \(r\rho\,d\theta\,d\phi\). A centered point source is a distance \(D=(R^2+r^2+2Rr\cos\theta)^{1/2}\) from the electron.
+
+In atomic units, thin-layer quantization adds \(V_g=-R^2/(8r^2\rho^2)\) to \(-\Delta_g/2\). With \(\psi=e^{im\phi}\chi(\theta)/\sqrt{2\pi}\), the kinetic terms become \(-(\rho\chi')'/(2r^2\rho)+m^2\chi/(2\rho^2)\). Multiplying by \(\sqrt{r\rho}\) and collecting curvature terms gives
+
+\[H_m=-\frac{1}{2r^2}\frac{d^2}{d\theta^2}-\frac{1}{8r^2}+\frac{m^2-1/4}{2\rho^2}-\frac{1}{D}.\]
+
+The sector domain is periodic \(H^2\). Bounded real potentials preserve self-adjointness, and compact Sobolev embedding gives discrete spectrum. The energy scale belongs to the surface model after subtracting the transverse confinement energy.
+
+\subsection{How should the ordinary-hydrogen derivations be audited?}
+\label{problem:torus-hydrogen-review}
+\textit{Open question}
+
+Start with the three-dimensional Coulomb Hamiltonian \(H=p^2/(2m)-\kappa/r\). Fix the normalization of the Runge--Lenz vector \(A=(p\times L-L\times p)/(2m)-\kappa\hat r\). The commutator \([A_i,A_j]=-2i\hbar H\epsilon_{ijk}L_k/m\) makes the bound-state rescaling energy dependent. This is the algebra that should be checked before invoking the bound-state symmetry.
+
+For continuum states, test the stated normalization against the measure used for the spectral resolution. If \(E=\hbar^2k^2/(2m)\), then \(\delta(E-E')=\delta(k-k')/|dE/dk|\) on the positive branch. A derivation that switches between energy and momentum labels must account for this factor.
+
+The relativistic audit additionally needs the original radial Dirac conventions, recurrence coefficients and boundary conditions at zero and infinity. The archived referee comments describe a separate manuscript and do not supply that manuscript's complete equations. A line-by-line verdict therefore remains open.
+
+\subsection{Which figures support a toroidal-electron manuscript?}
+\label{problem:torus-figures}
+\textit{Worked answer}
+
+Use a common geometry, energy unit and solver version for all figures. First plot the effective sector potentials and several eigenvalues, marking degeneracies such as \(E_{n,m}=E_{n,-m}\). Then show a normalized ground-state profile and the kinetic, geometric and Coulomb contributions whose sum reproduces the eigenvalue.
+
+Make the convergence figure a test of a specific approximation. Plot \(|E_N-E_{\rm ref}|\) versus \(h=2\pi/N\) on logarithmic axes and state how \(E_{\rm ref}\) was obtained. Show time traces for both helicities on common axes and use the final \(m\)-populations as a check on the plotted angular momentum.
+
+\subsection{How should the ground-state wavefunction be plotted?}
+\label{problem:torus-wavefunction}
+\textit{Worked answer}
+
+With the \(1/\sqrt{2\pi}\) azimuthal normalization, probability in a poloidal interval is \(\int_{\theta_1}^{\theta_2}r\rho|\chi|^2\,d\theta\). Define \(u=\sqrt{r\rho}\chi\). Then the integral becomes \(\int_{\theta_1}^{\theta_2}|u|^2\,d\theta\), so the density is \(|u|^2\) in the flat-coordinate representation.
+
+Normalize using the corresponding quadrature weights and label the horizontal axis \(\theta\). An amplitude plot can separately show \(\chi\) or \(u\), with the choice stated. Taking \(|\chi|^2\) alone as the poloidal probability would omit the surface Jacobian.
+
+\subsection{How can the computed toroidal spectrum be checked?}
+\label{problem:torus-convergence}
+\textit{Verified benchmark}
+
+The Fourier matrix uses \(n^2/(2r^2)\) on the diagonal and the Fourier coefficient \(V_{n-n'}\) of the transformed potential. A second discretization approximates the original divergence-form kinetic term by centered face fluxes on a periodic mesh. Use cell weights \(w_i=r\rho_i\) and transform the weighted matrix by \(W^{1/2}\) before symmetric diagonalization.
+
+For successive grids use \(p_N=\log_2(e_{N/2}/e_N)\), where \(e_N=|E_N-E_{\rm Fourier}|\). The reproduced errors at 32 and 1024 points were approximately \(1.54\times10^{-5}\) and \(1.50\times10^{-8}\) Hartree. That factor of about 1024 over five refinements is consistent with second order.
+
+\subsection{How can every figure be regenerated from the same calculation?}
+\label{problem:torus-plot-workflow}
+\textit{Worked answer}
+
+Make the parameters the input, eigenvalues and propagation traces the intermediate data, and the figures and LaTeX tables the output. Compute the momentum expectation from the populations as \(\langle L_z\rangle=\hbar\sum_m mP_m\), with \(P_m=\sum_n|c_{nm}|^2\). The helicity figure and the final table should read the same numerical results.
+
+Test \(\sum_mP_m\approx1\), compare cutoffs, and check the final expectation against the time-series endpoint before writing figures. The old preset angular-momentum bars cannot establish a propagation result.
+
+\subsection{Are eleven references enough for this research manuscript?}
+\label{problem:torus-references}
+\textit{Worked answer}
+
+Build a claim-to-reference map. Geometry-induced potentials should cite the thin-layer derivation [1]. Surface electromagnetic coupling should cite a formulation that keeps the gauge transformation explicit [2]. Related toroidal solutions should be compared by potential, field and boundary assumptions [3].
+
+Numerical references should explain the actual discretization and integrator, with enough detail to reproduce the work. An adequate bibliography is determined by claim coverage, source relevance and accuracy.
+
+\subsection{Which final scientific checks matter for the toroidal draft?}
+\label{problem:torus-final-check}
+\textit{Verified benchmark}
+
+At \(R=10\), \(r=2\), the Coulomb potential lies in \([-1/8,-1/12]\) Hartree. The kinetic energy is nonnegative and the curvature potential is bounded below by \(-100/(8\cdot4\cdot64)\). Their sum gives \(E_0\ge-0.173828125\) Hartree. The computed ground energy is about \(-0.13536092714\) Hartree.
+
+For the specified centered-source pulses, a separate fixed-step fourth-order integrator reproduced approximately \(\pm0.000798119\hbar\) and \(\pm0.00257207\hbar\) for widths 5 and 60 in atomic time units. Reflection \(\phi\mapsto-\phi\) reverses the field's handedness and \(L_z\), explaining the sign relation. A real nondegenerate stationary ground state at zero flux has zero current.
+
+\subsection{Why choose a toroidal surface?}
+\label{problem:torus-motivation}
+\textit{Worked answer}
+
+The torus supplies a compact boundary-free surface with two periodic directions and a nonuniform curvature potential. Azimuthal symmetry gives an integer \(m\), while the poloidal coordinate carries the nonconstant effective potential. Thus symmetry and geometry can be varied in a controlled model.
+
+In the dipole approximation \(x\pm iy=\rho e^{\pm i\phi}\). Orthogonality of \(e^{im\phi}\) then imposes \(\Delta m=\pm1\). This makes the same model suitable for testing both static spectra and driven selection rules.
+
+\subsection{How can the full toroidal study be presented in a research talk?}
+\label{problem:torus-talk}
+\textit{Worked answer}
+
+Present the model in the order needed to reproduce the calculation. Derive the metric and measure, then show how separation and the unitary rescaling produce a one-dimensional periodic operator. Establish the energy bound before showing the numerical spectrum.
+
+Define the pulse through a vector potential with vanishing asymptotic tails and obtain \(E=-\dot A\). Compare results only after reporting the basis cutoff, propagation tolerance, field normalization and which envelope defines the quoted duration. Close with the model's assumptions and the displaced-source question.
+
+\subsection{How should the toroidal results be organized as a research article?}
+\label{problem:torus-manuscript-structure}
+\textit{Worked answer}
+
+State a testable model and observable in the abstract. In Methods, define the Hamiltonian domain, geometry, source, cutoffs, pulse and observables. In Results, pair each table with a convergence or consistency check. In Discussion, separate mathematical consequences of the model from assumptions needed to apply it to a real material.
+
+The article draft and code/data supplement support author review. Competing interests, contributions and disclosures still require author confirmation. The archive does not establish a final public preprint record.
+
+\subsection{Can the older torus-simulation workspace support a separate result?}
+\label{problem:torus-legacy}
+\textit{Open question}
+
+A standalone calculation needs an input Hamiltonian, geometry, initial condition, numerical method, tolerances and reproducible outputs. The old simulation folder has an empty source and images that duplicate earlier uploads from the toroidal manuscript workspace.
+
+These assets cannot identify the numerical calculation that produced them. Recover the original run configuration or reproduce the target observable from a declared model before treating it as a separate result.
+
+\subsection{How can Schmidt's charged-particle-on-a-torus study be reconstructed for a research talk?}
+\label{problem:torus-literature}
+\textit{Literature note}
+
+Schmidt studies a constrained charged particle with specified uniform electric and magnetic fields [3]. A reconstruction should start from the metric and curvature potential, identify how field components enter the surface Hamiltonian, and reproduce a stated limiting case under the paper's assumptions.
+
+For a side-by-side comparison list the external potential, magnetic coupling, periodicity and symmetry reductions. The centered-source model here uses a Coulomb potential on the same type of surface and a different field protocol. Agreement in geometry does not imply agreement in spectra.
+
+\subsection*{Conclusion}
+The model fixes the measure, operator domain and dipole selection rules. Static and pulse checks validate selected numerical observables for the specified idealized geometry. The legacy figures and displaced-source hypotheses require their own evidence.
+See \cite{ref1}, \cite{ref2}, \cite{ref3}, \cite{ref4}.
+
+\section{Spectral theory and quantum benchmarks}
+\paragraph{Abstract.} We show how operator domains determine the eigenmodes used in evolution equations. For a regular separated Robin problem we give the proof sequence from the adjoint domain to simplicity, then work through free-particle and spherical-shell benchmarks.
+
+\subsection{How can the same spatial operator organize heat, wave and Schr\"{o}dinger evolution?}
+\label{problem:pde-framework}
+\textit{Worked answer}
+
+Let \(A\) be nonnegative self-adjoint with a discrete eigenbasis \(A\phi_n=\lambda_n\phi_n\). Expand initial displacement \(f=\sum f_n\phi_n\) and, for the wave equation, velocity \(g=\sum g_n\phi_n\). The evolution equations reduce to independent scalar equations for each coefficient.
+
+For \(u_t=-Au\), \(u_n=e^{-t\lambda_n}f_n\). For \(u_{tt}=-Au\), \(u_n=f_n\cos(t\sqrt{\lambda_n})+g_n\sin(t\sqrt{\lambda_n})/\sqrt{\lambda_n}\), with zero mode \(f_n+tg_n\). For \(i\hbar u_t=Au\), \(u_n=e^{-it\lambda_n/\hbar}f_n\). The last evolution preserves the \(L^2\) norm.
+
+\subsection{Why do eigenvalue problems recur across mathematical physics?}
+\label{problem:eigenvalue-motivation}
+\textit{Worked answer}
+
+Separating \(u(x,t)=a(t)\phi(x)\) in a linear evolution with time-independent spatial operator reduces the spatial problem to \(A\phi=\lambda\phi\). The operator domain carries boundary and regularity conditions, so it is needed to identify the modes.
+
+For example, \(-\phi''=\lambda\phi\) with zero values at both ends of \((0,L)\) gives \(\phi_n=\sin(n\pi x/L)\) and \(\lambda_n=(n\pi/L)^2\). The same spatial eigenvalue determines heat decay, wave frequency squared, or quantum energy after the appropriate physical constants are included.
+
+\subsection{How can boundary conditions change the spectrum when the potential is fixed?}
+\label{problem:boundary-spectrum}
+\textit{Worked answer}
+
+For \(-u''\) on \((0,L)\), the positive-energy general solution is \(A\cos kx+B\sin kx\). Dirichlet conditions give \(k=n\pi/L\) with \(n\ge1\). Neumann conditions retain those positive eigenvalues and add the zero-energy constant state.
+
+For \(u'(0)=\alpha u(0)\) and \(u'(L)=-\beta u(L)\), eliminate \(B=\alpha A/k\) to get \((\alpha\beta-k^2)\sin kL+k(\alpha+\beta)\cos kL=0\). Treat \(k=0\) via the linear solution and negative energies via the hyperbolic solution. A sufficiently negative boundary form contribution can give a negative eigenvalue by the variational principle.
+
+\subsection{Why is the regular separated Robin Schr\"{o}dinger operator self-adjoint?}
+\label{problem:robin-adjoint}
+\textit{Worked answer}
+
+Integration by parts gives the boundary form \([u\overline{v'}-u'\overline v]_0^L\). It vanishes for two functions satisfying the same real separated Robin conditions. If \(v\) is in the adjoint domain, compactly supported tests imply \(v''\in L^2\) because \(V\in L^\infty\); hence \(v\in H^2\).
+
+Choose \(H^2\) test functions in the original domain with independent endpoint values. Vanishing of the boundary form then forces \(v'(0)=\alpha v(0)\) and \(v'(L)=-\beta v(L)\). Both domains coincide.
+
+\subsection{How do you show the Robin quadratic form is closed and bounded below?}
+\label{problem:robin-form}
+\textit{Worked answer}
+
+Integration by parts on the operator domain yields \(q[u]=\|u'\|^2+\int V|u|^2+\alpha|u(0)|^2+\beta|u(L)|^2\). The form is defined on \(H^1\), where traces are continuous. For any \(\epsilon>0\), each squared trace is bounded by \(\epsilon\|u'\|^2+C_\epsilon\|u\|^2\).
+
+Choose \(\epsilon\) so negative endpoint terms absorb less than half the derivative term. Adding a sufficiently large multiple of \(\|u\|^2\) gives a norm equivalent to \(H^1\). Completeness in that norm proves closedness and the shift proves a lower bound.
+
+\subsection{Why is the Robin resolvent compact?}
+\label{problem:robin-resolvent}
+\textit{Worked answer}
+
+Choose \(c\) so \(q[u]+c\|u\|^2\ge a\|u\|_{H^1}^2\), \(a>0\). If \(u=(H+c)^{-1}f\), testing the weak equation against \(u\) gives \(a\|u\|_{H^1}^2\le\|f\|_2\|u\|_2\). Thus the inverse maps bounded sets of \(L^2\) into bounded sets of \(H^1\).
+
+The compact embedding \(H^1(0,L)\hookrightarrow L^2(0,L)\) gives compactness at \(-c\). For \(z\) in the resolvent set, the resolvent identity writes \((H-z)^{-1}\) as a bounded factor times this compact inverse.
+
+\subsection{Why is the Robin spectrum discrete and why do the modes form a basis?}
+\label{problem:robin-eigenbasis}
+\textit{Worked answer}
+
+The shifted inverse is compact, positive, self-adjoint and injective, so the spectral theorem gives orthonormal eigenvectors with positive eigenvalues \(\mu_n\to0\). The kernel is zero, so the eigenvectors span the Hilbert space.
+
+Apply \(H+c\) to get \(\lambda_n=\mu_n^{-1}-c\). They are real, have finite multiplicity and tend to \(+\infty\). Compactness excludes finite accumulation points of the operator eigenvalues.
+
+\subsection{Why are separated Robin eigenvalues simple?}
+\label{problem:robin-simple}
+\textit{Worked answer}
+
+Two eigenfunctions for one \(\lambda\) solve the same second-order linear equation. The left Robin condition restricts their initial vectors \((u(0),u'(0))\) to the same one-dimensional line.
+
+A nonzero solution must have \(u(0)\ne0\) because zero value and zero derivative give the zero solution by uniqueness. Scale one eigenfunction to match the other's initial value and apply uniqueness again. The eigenspace is one-dimensional.
+
+\subsection{How do plane waves and Gaussian packets evolve for a free particle?}
+\label{problem:free-wave}
+\textit{Worked answer}
+
+For a plane wave \(e^{i(kx-\omega t)}\), substituting in the free Schr\"{o}dinger equation gives \(\omega=\hbar k^2/(2m)\). It is a generalized state with constant density. For an initially unchirped Gaussian of variance \(\sigma^2\), \(\langle p\rangle=\hbar k_0\), \({\rm Var}(p)=\hbar^2/(4\sigma^2)\), and the symmetrized position--momentum covariance is zero.
+
+In the Heisenberg picture \(x(t)=x(0)+pt/m\). Thus \(\langle x(t)\rangle=x_0+\hbar k_0t/m\) and \({\rm Var}[x(t)]=\sigma^2+\hbar^2t^2/(4m^2\sigma^2)\). The packet remains Gaussian under the quadratic momentum phase. Use an unreserved name such as energy to test the differential equation in Wolfram Language.
+
+\subsection{How does inserting an inner hard wall change the spherical-cavity spectrum?}
+\label{problem:spherical-shell}
+\textit{Worked benchmark}
+
+Separating \(\psi=R_l(r)Y_{lm}\) and writing \(u=rR_l\) gives \(-u''+l(l+1)u/r^2=k^2u\). For \(l=0\), the cavity solution is proportional to \(\sin(n\pi r/a)\), while in the shell \(b<r<a\) it is \(\sqrt{2/(a-b)}\sin[n\pi(r-b)/(a-b)]\). Thus \(E_n=\hbar^2\pi^2n^2/(2m(a-b)^2)\) in the shell.
+
+For general \(l\), the wall conditions on the \(j_l\) and \(y_l\) components give \(j_l(kb)y_l(ka)-j_l(ka)y_l(kb)=0\). The probability in a radial interval is \(\int|u|^2dr\), while the local volume density includes \(1/r^2\) and the angular harmonic. The \(l=0\) shell ground state assigns equal probability to the two radial halves.
+
+\subsection*{Conclusion}
+The Robin proofs apply to real bounded potentials on a finite interval and real separated parameters. The free and spherical examples show explicitly how the initial state and domain control physically measurable quantities.
+See \cite{ref4}.
+
+\section{Ultrafast and biological quantum dynamics}
+\paragraph{Abstract.} We derive the exact closed two-site transition probability and formulate a proposed open-system extension. For ultrafast electron dynamics we specify a propagation scheme, observables and convergence tests for a proposed numerical study.
+
+\subsection{How can a two-state quantum calculation model photosynthetic energy transfer?}
+\label{problem:photosynthesis}
+\textit{Worked answer + proposal}
+
+Subtract the mean site energy and write \(H=(\Delta/2)\sigma_z+J\sigma_x\), with real \(J\). Then \(H^2=(\Delta^2/4+J^2)I\), so \(e^{-iHt/\hbar}=\cos(\Omega t/\hbar)I-iH\sin(\Omega t/\hbar)/\Omega\), where \(\Omega=\sqrt{\Delta^2/4+J^2}\).
+
+The transition probability from site 1 to site 2 is \(J^2\sin^2(\Omega t/\hbar)/\Omega^2\), with zero transfer if both parameters vanish. For the proposed extension, introduce dephasing jumps on the pigment sites and explicit trapping and loss states. Validate trace conservation in the enlarged system and compare trap population versus time across dephasing rates. The export supplies illustrative inputs and no fitted biological claim.
+
+\subsection{How could short-pulse excitation and ionization be computed?}
+\label{problem:ultrafast-method}
+\textit{Proposed approach}
+
+Choose \(H_0=p^2/(2m)+V(x)\) and \(H(t)=H_0-qxE(t)\) in the length gauge. For a time step \(\Delta t\), a second-order split step alternates a half kinetic step in momentum space, a full midpoint potential step in position space, and a final half kinetic step.
+
+After the pulse, project onto field-free bound eigenstates. In a sufficiently large closed box with a converged spectral projection, the complementary norm gives a continuum estimate. With an absorber, track absorbed flux or use a surface-flux method instead of interpreting a reduced norm as the entire spectrum. Vary the box size, spacing, timestep and absorber independently. This is a proposed calculation.
+
+\subsection{What is the minimum viable study of ultrafast electron dynamics?}
+\label{problem:ultrafast-scope}
+\textit{Proposed approach}
+
+Start from one converged field-free bound state. Verify norm conservation without an absorber and the zero-field limit, then check a weak-pulse transition against first-order perturbation theory, \(c_f^{(1)}=-i\int e^{i\omega_{fi}t}\langle f|H_{\rm int}(t)|i\rangle dt/\hbar\).
+
+Vary pulse width at a declared fixed quantity such as peak field or fluence. Record pulse carrier, phase and polarization, and report sensitivity to numerical settings. Extend to three-dimensional hydrogen only after the one-dimensional benchmarks pass.
+
+\subsection*{Conclusion}
+The closed two-state probability supplies an exact test for any open-system implementation. The proposed light--matter calculation needs numerical and perturbative benchmarks before ionization or continuum spectra can be reported.
+See \cite{ref5}.
+
+\section{Collective scattering in neutron-star mergers}
+\paragraph{Abstract.} We derive the vacuum static limit of scalar exchange and outline a matching program for a hypothetical collective field. The medium-dependent coefficients, positive-geometry scaling, and waveform effects remain open.
+
+\subsection{What does a scalar-mediator scattering benchmark establish?}
+\label{problem:scalar-exchange}
+\textit{Worked toy limit}
+
+For scalar exchange with Yukawa vertex \(g\), the direct static nonrelativistic momentum-space potential is \(\widetilde V(\mathbf q)=-g^2/(\mathbf q^2+\mu^2)\) in natural units. The Green function of \(-\nabla^2+\mu^2\) in three dimensions is \(e^{-\mu r}/(4\pi r)\); multiplying by \(-g^2\) gives the coordinate-space interaction.
+
+The identical-fermion amplitude requires antisymmetrization, with the exchange contribution and spin labels treated consistently. This two-body check establishes a vacuum limit for a microscopic interaction, leaving the medium-dependent matching as a separate problem.
+
+\subsection{How could microscopic scattering be connected to a merger-scale field?}
+\label{problem:collective-proposal}
+\textit{Proposed approach}
+
+Choose an effective scalar \(S\) and specify what microscopic observable it represents. Propose an effective action with a kinetic term, a potential and a source coupling. Fit or derive its coefficients by comparing low-momentum response functions with those of a microscopic matter model in a regime where both descriptions apply.
+
+Test the vacuum and dilute limits before adding degeneracy, nuclear interactions and relativistic motion. A merger calculation would also need a consistent matter--field coupling and total stress-energy conservation. No merger result follows from the proposal alone.
+
+\subsection{How are the source and effective potential of a collective scattering field derived?}
+\label{problem:collective-matching}
+\textit{Open question}
+
+Start with a functional \(\Gamma[S]\) and expand around a reference background \(S_0\). Its first functional derivative gives the linear response to changing \(S\); its second derivative is a kernel that can contain local and nonlocal terms. A local \(V_{\rm eff}\) requires a controlled derivative expansion.
+
+Separate explicit driving from terms already absorbed into the effective potential to avoid counting the same interaction twice. No microscopic observable, medium ensemble and matching prescription have yet been fixed together in the archived work. The proposed \(J\) and \(V_{\rm eff}\) therefore remain undetermined.
+
+\subsection{Can positive geometry scale to ensembles of microscopic scattering processes?}
+\label{problem:collective-scale}
+\textit{Open question}
+
+Define a set of amplitudes with known answers and ask which admit the chosen positive-geometry representation. Verify signs, exchange symmetries and limits against a conventional computation at fixed kinematics before measuring scaling.
+
+A practical benchmark would track runtime, memory and error as multiplicity or the number of processes grows. A geometric representation for a particular amplitude does not by itself control the many-body coarse-graining. No scaling result is supplied.
+
+\subsection{What would show that the proposed field affects gravitational waves?}
+\label{problem:collective-observable}
+\textit{Open question}
+
+Derive \(T^{(S)}_{\mu\nu}\) by varying the matched action with respect to the metric and check \(\nabla_\mu(T^{\mu\nu}_{\rm matter}+T^{\mu\nu}_{S})=0\). Compare two runs at fixed binary parameters and equation of state, one with the matched interaction and one with the baseline matter model.
+
+Compare phase, amplitude and spectral differences after checking resolution and extraction-radius effects. Without a matched source or an evolved merger model there is no archived waveform prediction.
+
+\subsection{What sequence of benchmarks connects the toy model to a merger?}
+\label{problem:collective-workflow}
+\textit{Proposed approach}
+
+Use the two-body amplitude to calibrate conventions and the vacuum interaction. Next match the static and dynamic response of a degenerate gas, then quantify changes from nuclear interactions and beta equilibrium. At each stage, identify which wavelengths, frequencies and densities the effective description can cover.
+
+For a relativistic fluid, match the constitutive terms and conservation laws before coupling to gravity. A binary-merger simulation is the last test of the program, contingent on the preceding matches.
+
+\subsection*{Conclusion}
+The Yukawa limit fixes a vacuum benchmark. Obtaining a merger prediction requires a specified collective observable, controlled medium matching and a conservation-tested coupling to gravity.
+See \cite{ref6}.
+
+\begin{thebibliography}{9}
+\bibitem{ref1} R. C. T. da Costa, Quantum mechanics of a constrained particle, Phys. Rev. A 23, 1982 (1981). \url{https://journals.aps.org/pra/abstract/10.1103/PhysRevA.23.1982}
+\bibitem{ref2} G. Ferrari and G. Cuoghi, Schr\"{o}dinger Equation for a Particle on a Curved Surface in an Electric and Magnetic Field, Phys. Rev. Lett. 100, 230403 (2008). \url{https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.100.230403}
+\bibitem{ref3} A. G. M. Schmidt, Exact Solutions to Schr\"{o}dinger Equation for a Charged Particle on a Torus in Uniform Electric and Magnetic Fields, Braz. J. Phys. 50, 419--429 (2020). \url{https://link.springer.com/article/10.1007/s13538-020-00764-9}
+\bibitem{ref4} G. Teschl, Mathematical Methods in Quantum Mechanics, second ed., AMS (2014). \url{https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/}
+\bibitem{ref5} M. Mohseni et al., Environment-Assisted Quantum Walks in Photosynthetic Energy Transfer (2008). \url{https://arxiv.org/abs/0805.2741}
+\bibitem{ref6} N. Arkani-Hamed and J. Trnka, The Amplituhedron (2013). \url{https://arxiv.org/abs/1312.2007}
+\end{thebibliography}
+\end{document}
